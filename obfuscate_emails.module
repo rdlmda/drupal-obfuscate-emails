@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Implements hook_filter_info()
+ */
+function obfuscate_emails_filter_info() {
+  $filters = array();
+  $filters['filter_obfuscate_emails'] = array(
+    'title' => t('Obfuscate emails for spambots'),
+    'description' => t('Changes all "@" symbols in email addresses in order to fool spambot web scrapers.'),
+    'process callback' => '_obfuscate_emails_process',
+  );
+  return $filters;
+}
+
+function _obfuscate_emails_process($text, $filter) {
+  if (!empty($text)) {
+    $newtext = str_replace('@','<script>document.write("@");</script>',$text);
+    return $newtext;
+  }
+  return $text;
+}
