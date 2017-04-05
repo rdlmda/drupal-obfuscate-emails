@@ -1,5 +1,5 @@
 name = Obfuscate email addresses
 description = Obfuscates email addresses against spambots
 package = UFRJ
-version = 0.1
+version = 0.2
 core = 7.x 
