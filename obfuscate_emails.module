@@ -14,7 +14,7 @@ function obfuscate_emails_filter_info() {
 }
 
 function _obfuscate_emails_process($text, $filter) {
-  if (!empty($text) && strlen($text) > 160  ) {
+  if (!empty($text) && strlen($text) > 160 && !(strpos($text,'@') === false) ) {
     $newtext = str_replace('@','OBFUSCATED__EMAIL__SYMBOL',$text);
     $newtext .= '<script>document.body.innerHTML = document.body.innerHTML.replace(/OBFUSCATED__EMAIL__SYMBOL/g,\'@\')</script>';
     return $newtext;
